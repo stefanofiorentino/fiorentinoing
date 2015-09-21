@@ -5,10 +5,9 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
 twbs:bootstrap
 meteorhacks:npm
 
 
 npm-container
+meteorhacks:kadira
