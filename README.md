@@ -9,4 +9,4 @@ Meteor UP
 =========
 
 To deploy the website just check the ip address of your server, and 
-$> mup deploy
+> mup deploy
