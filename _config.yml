@@ -22,8 +22,8 @@ title: Fiorentino Ing. Stefano
 email: s.fiorentino@relewant.com
 description: >- # this means to ignore newlines until "baseurl:"
   Lead IoT Product Engineer · AWS and Alexa integrator · Bluez pathfinder · FOSS contributor
-baseurl: "/fiorentinoing" # the subpath of your site, e.g. /blog
-url: "stefanofiorentino.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "fiorentinoing.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: fiorentinoing
 github_username:  stefanofiorentino
 
