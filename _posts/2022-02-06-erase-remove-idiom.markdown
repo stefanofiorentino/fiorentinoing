@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Erase-remove idiom"
-date:   2022-02-16 18:00:00 +0200
+date:   2022-02-06 14:00:00 +0200
 categories: modern cpp
 ---
 If you're are working with a C++ STL container, chances are at some point you'll need to _delete_ some entries.
