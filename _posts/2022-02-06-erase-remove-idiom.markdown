@@ -4,7 +4,6 @@ title:  "Erase-remove idiom"
 date:   2022-02-06 14:00:00 +0200
 categories: modern cpp
 ---
-# Erase-Remove idiom
 If you're are working with a C++ STL container, chances are at some point you'll need to _delete_ some entries.
 Here is the idiom you usually want to implement to both remove the entries from the collection and cancel (i.e., erase) their content (C++20 provides better solution for this).
 ```
