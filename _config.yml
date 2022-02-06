@@ -21,7 +21,7 @@
 title: Fiorentino Ing. Stefano
 email: stefano.fiore84@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Senior C++ Engineer · Alexa Voice Services developer · Bluetooth LE Qualified Engineer · FOSS contributor
+  Modern C++ · Yocto Project · Wi-Fi · BLE · Co-Founder at Italian Embedded · Organizer at C++ User Group Lugano
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "fiorentinoing.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: fiorentinoing
