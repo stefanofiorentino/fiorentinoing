@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Custom type traits"
-date:   2022-02-17 7:00:00 +0200
+date:   2022-02-17 07:00:00 +0200
 categories: modern cpp
 ---
 # Write your own type traits
