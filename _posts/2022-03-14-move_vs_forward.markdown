@@ -27,6 +27,9 @@ NOTE: The use of `std::forward` is not necessarly yielding the universal referen
 
 ## Reference
 1) https://isocpp.org/blog/2012/11/universal-references-in-c11-scott-meyers
+   
 2) (https://github.com/stefanofiorentino/pool_type.git
+   
 3) https://www.meetup.com/lugano-c-meetup/events/283927602/
+   
 4) https://godbolt.org/
