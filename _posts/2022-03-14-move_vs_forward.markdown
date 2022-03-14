@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "std::move vs std::forward"
-date:   2022-03-16 07:00:00 +0200
+date:   2022-03-14 07:00:00 +0200
 categories: modern cpp
 ---
 
