@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>From switch-case to polymorphism | Fiorentino Ing. Stefano</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="From switch-case to polymorphism" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In the C language, neither function overload and polymorphism are present. So to be able to act polymorphically, you have to define several functions with different names (or leverage the type erasure technique). Here is a simple code that is aiming to perform a specific action given the type name (here represented as a string). namespace details { std::string print_foo() { return &quot;char* details::print_foo()&quot;; } std::string print_bar() { return &quot;char* details::print_bar()&quot;; } } // namespace details std::string perform_action_based_on_type(std::string const &amp;action_to_perform) { if (&quot;foo&quot; == action_to_perform) { return details::print_foo(); } else if (&quot;bar&quot; == action_to_perform) { return details::print_bar(); } } TEST(from_switch_case_to_polymorphism, C_style_polymorphism) { ASSERT_EQ(&quot;char* details::print_foo()&quot;, perform_action_based_on_type(&quot;foo&quot;)); ASSERT_EQ(&quot;char* details::print_bar()&quot;, perform_action_based_on_type(&quot;bar&quot;)); } In the C++ language, this same code can be translated into the following: class base { protected: virtual std::string do_print() const = 0; public: std::string print() const { return do_print(); } }; class foo : public base { std::string do_print() const override { return details::print_foo(); } }; class bar : public base { std::string do_print() const override { return details::print_bar(); } }; std::shared_ptr&lt;base&gt; factory(std::string const &amp;action_to_perform) { if (&quot;foo&quot; == action_to_perform) { return std::make_shared&lt;foo&gt;(); } else if (&quot;bar&quot; == action_to_perform) { return std::make_shared&lt;bar&gt;(); } } TEST(from_switch_case_to_polymorphism, Cpp_style_polymorphism) { ASSERT_EQ(&quot;char* details::print_foo()&quot;, factory(&quot;foo&quot;)-&gt;print()); ASSERT_EQ(&quot;char* details::print_bar()&quot;, factory(&quot;bar&quot;)-&gt;print()); } Here the call to the action t oobe performed is easier. The factory method here acts as a type selector. Given the result of this factory method, the function call, from the callee point of view, is exaclty the same. This is the only reflection currently available in cpp, kind-of. NOTE: if the smart_ptr and the NVI pattern disturbs your understanding, just let me know. Reference 1) https://github.com/stefanofiorentino/experimental/blob/develop/test/from_switch_case_to_polymorphism.cpp" />
+<meta property="og:description" content="In the C language, neither function overload and polymorphism are present. So to be able to act polymorphically, you have to define several functions with different names (or leverage the type erasure technique). Here is a simple code that is aiming to perform a specific action given the type name (here represented as a string). namespace details { std::string print_foo() { return &quot;char* details::print_foo()&quot;; } std::string print_bar() { return &quot;char* details::print_bar()&quot;; } } // namespace details std::string perform_action_based_on_type(std::string const &amp;action_to_perform) { if (&quot;foo&quot; == action_to_perform) { return details::print_foo(); } else if (&quot;bar&quot; == action_to_perform) { return details::print_bar(); } } TEST(from_switch_case_to_polymorphism, C_style_polymorphism) { ASSERT_EQ(&quot;char* details::print_foo()&quot;, perform_action_based_on_type(&quot;foo&quot;)); ASSERT_EQ(&quot;char* details::print_bar()&quot;, perform_action_based_on_type(&quot;bar&quot;)); } In the C++ language, this same code can be translated into the following: class base { protected: virtual std::string do_print() const = 0; public: std::string print() const { return do_print(); } }; class foo : public base { std::string do_print() const override { return details::print_foo(); } }; class bar : public base { std::string do_print() const override { return details::print_bar(); } }; std::shared_ptr&lt;base&gt; factory(std::string const &amp;action_to_perform) { if (&quot;foo&quot; == action_to_perform) { return std::make_shared&lt;foo&gt;(); } else if (&quot;bar&quot; == action_to_perform) { return std::make_shared&lt;bar&gt;(); } } TEST(from_switch_case_to_polymorphism, Cpp_style_polymorphism) { ASSERT_EQ(&quot;char* details::print_foo()&quot;, factory(&quot;foo&quot;)-&gt;print()); ASSERT_EQ(&quot;char* details::print_bar()&quot;, factory(&quot;bar&quot;)-&gt;print()); } Here the call to the action t oobe performed is easier. The factory method here acts as a type selector. Given the result of this factory method, the function call, from the callee point of view, is exaclty the same. This is the only reflection currently available in cpp, kind-of. NOTE: if the smart_ptr and the NVI pattern disturbs your understanding, just let me know. Reference 1) https://github.com/stefanofiorentino/experimental/blob/develop/test/from_switch_case_to_polymorphism.cpp" />
+<link rel="canonical" href="http://localhost:4000/modern/cpp/2022/05/27/from_switch_case_to_polymorphism.html" />
+<meta property="og:url" content="http://localhost:4000/modern/cpp/2022/05/27/from_switch_case_to_polymorphism.html" />
+<meta property="og:site_name" content="Fiorentino Ing. Stefano" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-05-27T05:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="From switch-case to polymorphism" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-27T05:00:00+00:00","datePublished":"2022-05-27T05:00:00+00:00","description":"In the C language, neither function overload and polymorphism are present. So to be able to act polymorphically, you have to define several functions with different names (or leverage the type erasure technique). Here is a simple code that is aiming to perform a specific action given the type name (here represented as a string). namespace details { std::string print_foo() { return &quot;char* details::print_foo()&quot;; } std::string print_bar() { return &quot;char* details::print_bar()&quot;; } } // namespace details std::string perform_action_based_on_type(std::string const &amp;action_to_perform) { if (&quot;foo&quot; == action_to_perform) { return details::print_foo(); } else if (&quot;bar&quot; == action_to_perform) { return details::print_bar(); } } TEST(from_switch_case_to_polymorphism, C_style_polymorphism) { ASSERT_EQ(&quot;char* details::print_foo()&quot;, perform_action_based_on_type(&quot;foo&quot;)); ASSERT_EQ(&quot;char* details::print_bar()&quot;, perform_action_based_on_type(&quot;bar&quot;)); } In the C++ language, this same code can be translated into the following: class base { protected: virtual std::string do_print() const = 0; public: std::string print() const { return do_print(); } }; class foo : public base { std::string do_print() const override { return details::print_foo(); } }; class bar : public base { std::string do_print() const override { return details::print_bar(); } }; std::shared_ptr&lt;base&gt; factory(std::string const &amp;action_to_perform) { if (&quot;foo&quot; == action_to_perform) { return std::make_shared&lt;foo&gt;(); } else if (&quot;bar&quot; == action_to_perform) { return std::make_shared&lt;bar&gt;(); } } TEST(from_switch_case_to_polymorphism, Cpp_style_polymorphism) { ASSERT_EQ(&quot;char* details::print_foo()&quot;, factory(&quot;foo&quot;)-&gt;print()); ASSERT_EQ(&quot;char* details::print_bar()&quot;, factory(&quot;bar&quot;)-&gt;print()); } Here the call to the action t oobe performed is easier. The factory method here acts as a type selector. Given the result of this factory method, the function call, from the callee point of view, is exaclty the same. This is the only reflection currently available in cpp, kind-of. NOTE: if the smart_ptr and the NVI pattern disturbs your understanding, just let me know. Reference 1) https://github.com/stefanofiorentino/experimental/blob/develop/test/from_switch_case_to_polymorphism.cpp","headline":"From switch-case to polymorphism","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/modern/cpp/2022/05/27/from_switch_case_to_polymorphism.html"},"url":"http://localhost:4000/modern/cpp/2022/05/27/from_switch_case_to_polymorphism.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Fiorentino Ing. Stefano" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Fiorentino Ing. Stefano</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">From switch-case to polymorphism</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-05-27T05:00:00+00:00" itemprop="datePublished">May 27, 2022
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>In the C language, neither function overload and polymorphism are present. So to be able to act polymorphically, you have to define several functions with different names (or leverage the type erasure technique).</p>
+
+<p>Here is a simple code that is aiming to perform a specific action given the type name (here represented as a string).</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="n">details</span> <span class="p">{</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">print_foo</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"char* details::print_foo()"</span><span class="p">;</span> <span class="p">}</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">print_bar</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"char* details::print_bar()"</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span> <span class="c1">// namespace details</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="nf">perform_action_based_on_type</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">action_to_perform</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="s">"foo"</span> <span class="o">==</span> <span class="n">action_to_perform</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">details</span><span class="o">::</span><span class="n">print_foo</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s">"bar"</span> <span class="o">==</span> <span class="n">action_to_perform</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">details</span><span class="o">::</span><span class="n">print_bar</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">from_switch_case_to_polymorphism</span><span class="p">,</span> <span class="n">C_style_polymorphism</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ASSERT_EQ</span><span class="p">(</span><span class="s">"char* details::print_foo()"</span><span class="p">,</span> <span class="n">perform_action_based_on_type</span><span class="p">(</span><span class="s">"foo"</span><span class="p">));</span>
+  <span class="n">ASSERT_EQ</span><span class="p">(</span><span class="s">"char* details::print_bar()"</span><span class="p">,</span> <span class="n">perform_action_based_on_type</span><span class="p">(</span><span class="s">"bar"</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In the C++ language, this same code can be translated into the following:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">base</span> <span class="p">{</span>
+<span class="nl">protected:</span>
+  <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">do_print</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nl">public:</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">print</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">do_print</span><span class="p">();</span> <span class="p">}</span>
+<span class="p">};</span>
+<span class="k">class</span> <span class="nc">foo</span> <span class="o">:</span> <span class="k">public</span> <span class="n">base</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">do_print</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">details</span><span class="o">::</span><span class="n">print_foo</span><span class="p">();</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">bar</span> <span class="o">:</span> <span class="k">public</span> <span class="n">base</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">do_print</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">details</span><span class="o">::</span><span class="n">print_bar</span><span class="p">();</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">base</span><span class="o">&gt;</span> <span class="n">factory</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">action_to_perform</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="s">"foo"</span> <span class="o">==</span> <span class="n">action_to_perform</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">foo</span><span class="o">&gt;</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s">"bar"</span> <span class="o">==</span> <span class="n">action_to_perform</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">bar</span><span class="o">&gt;</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">from_switch_case_to_polymorphism</span><span class="p">,</span> <span class="n">Cpp_style_polymorphism</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ASSERT_EQ</span><span class="p">(</span><span class="s">"char* details::print_foo()"</span><span class="p">,</span> <span class="n">factory</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">print</span><span class="p">());</span>
+  <span class="n">ASSERT_EQ</span><span class="p">(</span><span class="s">"char* details::print_bar()"</span><span class="p">,</span> <span class="n">factory</span><span class="p">(</span><span class="s">"bar"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">print</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here the call to the action t oobe performed is easier. The factory method here acts as a type selector. Given the result of this factory method, the function call, from the callee point of view, is exaclty the same.</p>
+
+<p>This is the only reflection currently available in cpp, kind-of.</p>
+
+<p>NOTE: if the smart_ptr and the NVI pattern disturbs your understanding, just let me know.</p>
+
+<h2 id="reference">Reference</h2>
+<p>1) https://github.com/stefanofiorentino/experimental/blob/develop/test/from_switch_case_to_polymorphism.cpp</p>
+
+  </div><a class="u-url" href="/modern/cpp/2022/05/27/from_switch_case_to_polymorphism.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Fiorentino Ing. Stefano</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Fiorentino Ing. Stefano</li><li><a class="u-email" href="mailto:stefano.fiore84@gmail.com">stefano.fiore84@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/stefanofiorentino"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">stefanofiorentino</span></a></li><li><a href="https://www.twitter.com/fiorentinoing"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">fiorentinoing</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Modern C++ · Yocto Project · Wi-Fi · BLE · Co-Founder at Italian Embedded · Organizer at C++ User Group Lugano</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
