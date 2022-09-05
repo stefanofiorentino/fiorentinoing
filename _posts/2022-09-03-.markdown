@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "C++ allocators"
+date:   2022-09-05 07:00:00 +0200
+categories: modern cpp
+---
+
+"The standard library allocators are one of the more mysterious parts of namespace std, as well as one of the more flexible parts. In this “under construction” article and GitHub repo, Thomas Köppe undertakes to demystify the feature".
+
+[A visitor’s guide to C++ allocators](https://rawgit.com/google/cxx-std-draft/allocator-paper/allocator_user_guide.html)
+
+Here is the [isocpp](https://isocpp.org/blog/2014/08/a-visitors-guide-to-allocators) blog post where I found it (and get the quote).
+
+#cpp #software #memory
