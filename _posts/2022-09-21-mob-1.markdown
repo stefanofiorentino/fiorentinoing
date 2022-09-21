@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "Serial added value over Parallel WIPs"
+date:   2022-09-21 7:00:00 +0200
+categories: modern cpp testing
+---
+I'm lately experiencing the serial review and merge to trunk.
+
+Serially addition of value over parallel conflicting WIPs.
+
+So, we're currently pairing and even mobbing to get PRs rebased, reviewed, approved and merged together at once.
+
+I know there is a flaw in doing this because maybe we started too late, but as we had several independent work in progress, outcomes are already showing this is the right way to go.
+
+In the near future, we'll experiment this setup during the whole software development process.
+
+#cpp #software #trunkbaseddevelopment #continuousintegration
