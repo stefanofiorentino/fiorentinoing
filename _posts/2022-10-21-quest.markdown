@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "It's too late"
+date:   2022-10-21 07:00:00 +0200
+categories: modern cpp
+---
+
+If you are in the quest for a good debugging tool, it's too late.
+Test earlier, test hard.
+Fail soon, fail better.
+
+#cpp #software #continuousintegration
