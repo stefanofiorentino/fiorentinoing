@@ -3,21 +3,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>I belong to a family | Fiorentino Ing. Stefano</title>
+<title>Push switch-cases at the edge. | Fiorentino Ing. Stefano</title>
 <meta name="generator" content="Jekyll v3.9.2" />
-<meta property="og:title" content="I belong to a family" />
+<meta property="og:title" content="Push switch-cases at the edge." />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="As I am a parent, I belong to a family." />
-<meta property="og:description" content="As I am a parent, I belong to a family." />
-<link rel="canonical" href="http://localhost:4000/modern/cpp/2022/09/03/composition.html" />
-<meta property="og:url" content="http://localhost:4000/modern/cpp/2022/09/03/composition.html" />
+<meta name="description" content="The only place where conditionals can be accepted is at the edge of your application, everywhere else polymorphism is the way to go." />
+<meta property="og:description" content="The only place where conditionals can be accepted is at the edge of your application, everywhere else polymorphism is the way to go." />
+<link rel="canonical" href="http://localhost:4000/modern/cpp/2022/09/08/switch-case.html" />
+<meta property="og:url" content="http://localhost:4000/modern/cpp/2022/09/08/switch-case.html" />
 <meta property="og:site_name" content="Fiorentino Ing. Stefano" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-09-03T07:00:00+02:00" />
+<meta property="article:published_time" content="2022-09-08T07:00:00+02:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="I belong to a family" />
+<meta property="twitter:title" content="Push switch-cases at the edge." />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-09-03T07:00:00+02:00","datePublished":"2022-09-03T07:00:00+02:00","description":"As I am a parent, I belong to a family.","headline":"I belong to a family","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/modern/cpp/2022/09/03/composition.html"},"url":"http://localhost:4000/modern/cpp/2022/09/03/composition.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-09-08T07:00:00+02:00","datePublished":"2022-09-08T07:00:00+02:00","description":"The only place where conditionals can be accepted is at the edge of your application, everywhere else polymorphism is the way to go.","headline":"Push switch-cases at the edge.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/modern/cpp/2022/09/08/switch-case.html"},"url":"http://localhost:4000/modern/cpp/2022/09/08/switch-case.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Fiorentino Ing. Stefano" /></head>
 <body><header class="site-header" role="banner">
@@ -40,20 +40,24 @@
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">I belong to a family</h1>
+    <h1 class="post-title p-name" itemprop="name headline">Push switch-cases at the edge.</h1>
     <p class="post-meta">
-      <time class="dt-published" datetime="2022-09-03T07:00:00+02:00" itemprop="datePublished">Sep 3, 2022
+      <time class="dt-published" datetime="2022-09-08T07:00:00+02:00" itemprop="datePublished">Sep 8, 2022
       </time></p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>As I am a parent, I belong to a family.</p>
+    <p>The only place where conditionals can be accepted is at the edge of your application, 
+everywhere else polymorphism is the way to go.</p>
 
-<p>So my family <em>has a</em> family member.</p>
+<p>Whenever you find a conditional in your code, you can replace it with a polymorphic action.
+You can do it by pushing to the edge of your application this conditional, i.e., the selection of the action to be performed. Chances are you can reuse this same (brand-new) action again and again in other places.</p>
 
-<p>That’s composition.</p>
+<p>This video is where I started thinking about this: https://youtube.com/watch?v=os6ssw1qylU&amp;feature=share</p>
 
-  </div><a class="u-url" href="/modern/cpp/2022/09/03/composition.html" hidden></a>
+<p>#polymorphism #software #continuousintegration</p>
+
+  </div><a class="u-url" href="/modern/cpp/2022/09/08/switch-case.html" hidden></a>
 </article>
 
       </div>

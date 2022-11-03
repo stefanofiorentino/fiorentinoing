@@ -7,17 +7,17 @@
 <meta name="generator" content="Jekyll v3.9.2" />
 <meta property="og:title" content="From switch-case to polymorphism" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="In the C language, neither function overload and polymorphism are present. So to be able to act polymorphically, you have to define several functions with different names (or leverage the type erasure technique). Here is a simple code that is aiming to perform a specific action given the type name (here represented as a string). namespace details { std::string print_foo() { return &quot;char* details::print_foo()&quot;; } std::string print_bar() { return &quot;char* details::print_bar()&quot;; } } // namespace details std::string perform_action_based_on_type(std::string const &amp;action_to_perform) { if (&quot;foo&quot; == action_to_perform) { return details::print_foo(); } else if (&quot;bar&quot; == action_to_perform) { return details::print_bar(); } } TEST(from_switch_case_to_polymorphism, C_style_polymorphism) { ASSERT_EQ(&quot;char* details::print_foo()&quot;, perform_action_based_on_type(&quot;foo&quot;)); ASSERT_EQ(&quot;char* details::print_bar()&quot;, perform_action_based_on_type(&quot;bar&quot;)); } In the C++ language, this same code can be translated into the following: class base { protected: virtual std::string do_print() const = 0; public: std::string print() const { return do_print(); } }; class foo : public base { std::string do_print() const override { return details::print_foo(); } }; class bar : public base { std::string do_print() const override { return details::print_bar(); } }; std::shared_ptr&lt;base&gt; factory(std::string const &amp;action_to_perform) { if (&quot;foo&quot; == action_to_perform) { return std::make_shared&lt;foo&gt;(); } else if (&quot;bar&quot; == action_to_perform) { return std::make_shared&lt;bar&gt;(); } } TEST(from_switch_case_to_polymorphism, Cpp_style_polymorphism) { ASSERT_EQ(&quot;char* details::print_foo()&quot;, factory(&quot;foo&quot;)-&gt;print()); ASSERT_EQ(&quot;char* details::print_bar()&quot;, factory(&quot;bar&quot;)-&gt;print()); } Here the call to the action t oobe performed is easier. The factory method here acts as a type selector. Given the result of this factory method, the function call, from the callee point of view, is exaclty the same. This is the only reflection currently available in cpp, kind-of. NOTE: if the smart_ptr and the NVI pattern disturbs your understanding, just let me know. Reference 1) https://github.com/stefanofiorentino/experimental/blob/develop/test/from_switch_case_to_polymorphism.cpp" />
-<meta property="og:description" content="In the C language, neither function overload and polymorphism are present. So to be able to act polymorphically, you have to define several functions with different names (or leverage the type erasure technique). Here is a simple code that is aiming to perform a specific action given the type name (here represented as a string). namespace details { std::string print_foo() { return &quot;char* details::print_foo()&quot;; } std::string print_bar() { return &quot;char* details::print_bar()&quot;; } } // namespace details std::string perform_action_based_on_type(std::string const &amp;action_to_perform) { if (&quot;foo&quot; == action_to_perform) { return details::print_foo(); } else if (&quot;bar&quot; == action_to_perform) { return details::print_bar(); } } TEST(from_switch_case_to_polymorphism, C_style_polymorphism) { ASSERT_EQ(&quot;char* details::print_foo()&quot;, perform_action_based_on_type(&quot;foo&quot;)); ASSERT_EQ(&quot;char* details::print_bar()&quot;, perform_action_based_on_type(&quot;bar&quot;)); } In the C++ language, this same code can be translated into the following: class base { protected: virtual std::string do_print() const = 0; public: std::string print() const { return do_print(); } }; class foo : public base { std::string do_print() const override { return details::print_foo(); } }; class bar : public base { std::string do_print() const override { return details::print_bar(); } }; std::shared_ptr&lt;base&gt; factory(std::string const &amp;action_to_perform) { if (&quot;foo&quot; == action_to_perform) { return std::make_shared&lt;foo&gt;(); } else if (&quot;bar&quot; == action_to_perform) { return std::make_shared&lt;bar&gt;(); } } TEST(from_switch_case_to_polymorphism, Cpp_style_polymorphism) { ASSERT_EQ(&quot;char* details::print_foo()&quot;, factory(&quot;foo&quot;)-&gt;print()); ASSERT_EQ(&quot;char* details::print_bar()&quot;, factory(&quot;bar&quot;)-&gt;print()); } Here the call to the action t oobe performed is easier. The factory method here acts as a type selector. Given the result of this factory method, the function call, from the callee point of view, is exaclty the same. This is the only reflection currently available in cpp, kind-of. NOTE: if the smart_ptr and the NVI pattern disturbs your understanding, just let me know. Reference 1) https://github.com/stefanofiorentino/experimental/blob/develop/test/from_switch_case_to_polymorphism.cpp" />
+<meta name="description" content="In the C language, neither function overload and polymorphism are present. So to be able to act polymorphically, you have to define several functions with different names (or leverage the type erasure technique)." />
+<meta property="og:description" content="In the C language, neither function overload and polymorphism are present. So to be able to act polymorphically, you have to define several functions with different names (or leverage the type erasure technique)." />
 <link rel="canonical" href="http://localhost:4000/modern/cpp/2022/05/27/from_switch_case_to_polymorphism.html" />
 <meta property="og:url" content="http://localhost:4000/modern/cpp/2022/05/27/from_switch_case_to_polymorphism.html" />
 <meta property="og:site_name" content="Fiorentino Ing. Stefano" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-05-27T05:00:00+00:00" />
+<meta property="article:published_time" content="2022-05-27T07:00:00+02:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="From switch-case to polymorphism" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-27T05:00:00+00:00","datePublished":"2022-05-27T05:00:00+00:00","description":"In the C language, neither function overload and polymorphism are present. So to be able to act polymorphically, you have to define several functions with different names (or leverage the type erasure technique). Here is a simple code that is aiming to perform a specific action given the type name (here represented as a string). namespace details { std::string print_foo() { return &quot;char* details::print_foo()&quot;; } std::string print_bar() { return &quot;char* details::print_bar()&quot;; } } // namespace details std::string perform_action_based_on_type(std::string const &amp;action_to_perform) { if (&quot;foo&quot; == action_to_perform) { return details::print_foo(); } else if (&quot;bar&quot; == action_to_perform) { return details::print_bar(); } } TEST(from_switch_case_to_polymorphism, C_style_polymorphism) { ASSERT_EQ(&quot;char* details::print_foo()&quot;, perform_action_based_on_type(&quot;foo&quot;)); ASSERT_EQ(&quot;char* details::print_bar()&quot;, perform_action_based_on_type(&quot;bar&quot;)); } In the C++ language, this same code can be translated into the following: class base { protected: virtual std::string do_print() const = 0; public: std::string print() const { return do_print(); } }; class foo : public base { std::string do_print() const override { return details::print_foo(); } }; class bar : public base { std::string do_print() const override { return details::print_bar(); } }; std::shared_ptr&lt;base&gt; factory(std::string const &amp;action_to_perform) { if (&quot;foo&quot; == action_to_perform) { return std::make_shared&lt;foo&gt;(); } else if (&quot;bar&quot; == action_to_perform) { return std::make_shared&lt;bar&gt;(); } } TEST(from_switch_case_to_polymorphism, Cpp_style_polymorphism) { ASSERT_EQ(&quot;char* details::print_foo()&quot;, factory(&quot;foo&quot;)-&gt;print()); ASSERT_EQ(&quot;char* details::print_bar()&quot;, factory(&quot;bar&quot;)-&gt;print()); } Here the call to the action t oobe performed is easier. The factory method here acts as a type selector. Given the result of this factory method, the function call, from the callee point of view, is exaclty the same. This is the only reflection currently available in cpp, kind-of. NOTE: if the smart_ptr and the NVI pattern disturbs your understanding, just let me know. Reference 1) https://github.com/stefanofiorentino/experimental/blob/develop/test/from_switch_case_to_polymorphism.cpp","headline":"From switch-case to polymorphism","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/modern/cpp/2022/05/27/from_switch_case_to_polymorphism.html"},"url":"http://localhost:4000/modern/cpp/2022/05/27/from_switch_case_to_polymorphism.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-27T07:00:00+02:00","datePublished":"2022-05-27T07:00:00+02:00","description":"In the C language, neither function overload and polymorphism are present. So to be able to act polymorphically, you have to define several functions with different names (or leverage the type erasure technique).","headline":"From switch-case to polymorphism","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/modern/cpp/2022/05/27/from_switch_case_to_polymorphism.html"},"url":"http://localhost:4000/modern/cpp/2022/05/27/from_switch_case_to_polymorphism.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Fiorentino Ing. Stefano" /></head>
 <body><header class="site-header" role="banner">
@@ -42,7 +42,7 @@
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">From switch-case to polymorphism</h1>
     <p class="post-meta">
-      <time class="dt-published" datetime="2022-05-27T05:00:00+00:00" itemprop="datePublished">May 27, 2022
+      <time class="dt-published" datetime="2022-05-27T07:00:00+02:00" itemprop="datePublished">May 27, 2022
       </time></p>
   </header>
 
@@ -137,6 +137,29 @@
   </div>
 
 </footer>
-</body>
+<script type="text/javascript">
+        _linkedin_partner_id = "4857017";
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    </script>
+    <script type="text/javascript">
+        (function (l) {
+            if (!l) {
+                window.lintrk = function (a, b) { window.lintrk.q.push([a, b]) };
+                window.lintrk.q = []
+            }
+            var s = document.getElementsByTagName("script")[0];
+            var b = document.createElement("script");
+            b.type = "text/javascript"; b.async = true;
+            b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+            s.parentNode.insertBefore(b, s);
+        })(window.lintrk);
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none;" alt=""
+            src="https://px.ads.linkedin.com/collect/?pid=4857017&fmt=gif" />
+    </noscript>
+      
+  </body>
 
 </html>

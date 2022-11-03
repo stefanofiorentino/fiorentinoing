@@ -7,17 +7,17 @@
 <meta name="generator" content="Jekyll v3.9.2" />
 <meta property="og:title" content="Erase-remove idiom" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="If you’re are working with a C++ STL container, chances are at some point you’ll need to delete some entries. Here is the idiom you usually want to implement to both remove the entries from the collection and cancel (i.e., erase) their content (C++20 provides better solution for this). std::vector&lt;int&gt; v = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; ... v.erase(std::remove(v.begin(), v.end(), 5), v.end()); Did you know std::unique has similar behaviors? That is, you need to erase the duplicates by yourself. References 1) Meyers, Scott (2001). Effective STL : 50 specific ways to improve your use of the standard template library 2) https://en.wikipedia.org/wiki/Erase%E2%80%93remove_idiom For the more formal readers: 1) https://eel.is/c++draft/alg.remove 2) https://eel.is/c++draft/alg.unique" />
-<meta property="og:description" content="If you’re are working with a C++ STL container, chances are at some point you’ll need to delete some entries. Here is the idiom you usually want to implement to both remove the entries from the collection and cancel (i.e., erase) their content (C++20 provides better solution for this). std::vector&lt;int&gt; v = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; ... v.erase(std::remove(v.begin(), v.end(), 5), v.end()); Did you know std::unique has similar behaviors? That is, you need to erase the duplicates by yourself. References 1) Meyers, Scott (2001). Effective STL : 50 specific ways to improve your use of the standard template library 2) https://en.wikipedia.org/wiki/Erase%E2%80%93remove_idiom For the more formal readers: 1) https://eel.is/c++draft/alg.remove 2) https://eel.is/c++draft/alg.unique" />
+<meta name="description" content="If you’re are working with a C++ STL container, chances are at some point you’ll need to delete some entries. Here is the idiom you usually want to implement to both remove the entries from the collection and cancel (i.e., erase) their content (C++20 provides better solution for this). std::vector&lt;int&gt; v = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; ... v.erase(std::remove(v.begin(), v.end(), 5), v.end());" />
+<meta property="og:description" content="If you’re are working with a C++ STL container, chances are at some point you’ll need to delete some entries. Here is the idiom you usually want to implement to both remove the entries from the collection and cancel (i.e., erase) their content (C++20 provides better solution for this). std::vector&lt;int&gt; v = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; ... v.erase(std::remove(v.begin(), v.end(), 5), v.end());" />
 <link rel="canonical" href="http://localhost:4000/modern/cpp/2022/02/06/erase-remove-idiom.html" />
 <meta property="og:url" content="http://localhost:4000/modern/cpp/2022/02/06/erase-remove-idiom.html" />
 <meta property="og:site_name" content="Fiorentino Ing. Stefano" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-02-06T12:00:00+00:00" />
+<meta property="article:published_time" content="2022-02-06T13:00:00+01:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Erase-remove idiom" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-02-06T12:00:00+00:00","datePublished":"2022-02-06T12:00:00+00:00","description":"If you’re are working with a C++ STL container, chances are at some point you’ll need to delete some entries. Here is the idiom you usually want to implement to both remove the entries from the collection and cancel (i.e., erase) their content (C++20 provides better solution for this). std::vector&lt;int&gt; v = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; ... v.erase(std::remove(v.begin(), v.end(), 5), v.end()); Did you know std::unique has similar behaviors? That is, you need to erase the duplicates by yourself. References 1) Meyers, Scott (2001). Effective STL : 50 specific ways to improve your use of the standard template library 2) https://en.wikipedia.org/wiki/Erase%E2%80%93remove_idiom For the more formal readers: 1) https://eel.is/c++draft/alg.remove 2) https://eel.is/c++draft/alg.unique","headline":"Erase-remove idiom","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/modern/cpp/2022/02/06/erase-remove-idiom.html"},"url":"http://localhost:4000/modern/cpp/2022/02/06/erase-remove-idiom.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-02-06T13:00:00+01:00","datePublished":"2022-02-06T13:00:00+01:00","description":"If you’re are working with a C++ STL container, chances are at some point you’ll need to delete some entries. Here is the idiom you usually want to implement to both remove the entries from the collection and cancel (i.e., erase) their content (C++20 provides better solution for this). std::vector&lt;int&gt; v = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; ... v.erase(std::remove(v.begin(), v.end(), 5), v.end());","headline":"Erase-remove idiom","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/modern/cpp/2022/02/06/erase-remove-idiom.html"},"url":"http://localhost:4000/modern/cpp/2022/02/06/erase-remove-idiom.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Fiorentino Ing. Stefano" /></head>
 <body><header class="site-header" role="banner">
@@ -42,7 +42,7 @@
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">Erase-remove idiom</h1>
     <p class="post-meta">
-      <time class="dt-published" datetime="2022-02-06T12:00:00+00:00" itemprop="datePublished">Feb 6, 2022
+      <time class="dt-published" datetime="2022-02-06T13:00:00+01:00" itemprop="datePublished">Feb 6, 2022
       </time></p>
   </header>
 
@@ -96,6 +96,29 @@ v.erase(std::remove(v.begin(), v.end(), 5), v.end());
   </div>
 
 </footer>
-</body>
+<script type="text/javascript">
+        _linkedin_partner_id = "4857017";
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    </script>
+    <script type="text/javascript">
+        (function (l) {
+            if (!l) {
+                window.lintrk = function (a, b) { window.lintrk.q.push([a, b]) };
+                window.lintrk.q = []
+            }
+            var s = document.getElementsByTagName("script")[0];
+            var b = document.createElement("script");
+            b.type = "text/javascript"; b.async = true;
+            b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+            s.parentNode.insertBefore(b, s);
+        })(window.lintrk);
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none;" alt=""
+            src="https://px.ads.linkedin.com/collect/?pid=4857017&fmt=gif" />
+    </noscript>
+      
+  </body>
 
 </html>
