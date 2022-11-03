@@ -30,3 +30,5 @@ gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
 
 # Fix Integer overflow in cmark-gfm
 gem "commonmarker", ">= 0.23.4"
+
+gem "webrick", "~> 1.7"
