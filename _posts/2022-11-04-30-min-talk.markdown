@@ -4,8 +4,6 @@ title:  "Talk about a topic for 30 minutes"
 date:   2022-11-04 07:00:00 +0200
 categories: meetup cpp
 ---
-"If you can't talk about a topic for 30 minutes, unprepared, you probably don't know enough to sell a course".
-
-- @Justin Welsh
+"If you can't talk about a topic for 30 minutes, unprepared, you probably don't know enough to sell a course". <a href="https://www.linkedin.com/in/justinwelsh/">Justin Welsh</a>
 
 #meetup #cpp #usergroup #lugano
